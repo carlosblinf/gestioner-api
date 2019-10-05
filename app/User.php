@@ -10,13 +10,19 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ADMIN_USER = 'true';
+    const REGULAR_USER = 'false';
+
+    const USER_ACTIVED = 'true';
+    const USER_NOT_ACTIVED = 'false';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'nickname', 'password', 'admin', 'actived',
     ];
 
     /**
@@ -27,4 +33,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin(){
+        return $this->admin == User::ADMIN_USER;
+    }
+    public function isActived(){
+        return $this->actived == User::USER_ACTIVED;
+    }
 }
