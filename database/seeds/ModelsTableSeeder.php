@@ -2,6 +2,7 @@
 
 use App\User;
 use App\Persona;
+use App\Structure;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,5 +17,6 @@ class ModelsTableSeeder extends Seeder
     {
         factory(Persona::class, 100)->create();
         factory(User::class, 5)->create();
+        factory(Structure::class, 5)->create();
     }
 }
