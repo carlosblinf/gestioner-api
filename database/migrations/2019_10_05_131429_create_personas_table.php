@@ -18,10 +18,8 @@ class CreatePersonasTable extends Migration
             $table->increments('id');
             $table->string('name'); 
             $table->string('lastname');
-            $table->unsignedInteger('ci');
+            $table->unsignedBigInteger('ci');
             $table->string('address');
-            $table->string('municipality');
-            $table->string('province');
             $table->string('gender');
             $table->string('phone')->nullable();
             $table->string('celphone')->nullable();

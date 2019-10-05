@@ -12,7 +12,7 @@ class Persona extends Model
 	const PERSONA_NO_MEMBER = 'false';
 
     protected $fillable = [
-        'name', 'lastname','ci', 'address', 'municipality', 'province', 'gender',
+        'name', 'lastname','ci', 'address', 'gender',
         'phone', 'celphone', 'email', 'civil_status', 'date_birth', 'ocupations',
         'professions', 'desease', 'celula', 'member',
     ];
