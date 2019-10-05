@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Activity;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -39,5 +40,9 @@ class User extends Authenticatable
     }
     public function isActived(){
         return $this->actived == User::USER_ACTIVED;
+    }
+
+    public function activities(){
+        return $this->hasMany(Activity::class);
     }
 }

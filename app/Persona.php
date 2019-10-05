@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Activity;
+use App\Structure;
 use Illuminate\Database\Eloquent\Model;
 
 class Persona extends Model
@@ -17,5 +19,13 @@ class Persona extends Model
 
     public function isMember(){
     	return $this->member == Persona::PERSONA_MEMBER;
+    }
+
+    public function activities(){
+        return $this->belongsToMany(Activity::class);
+    }
+    
+    public function structures(){
+        return $this->belongsToMany(Structure::class);
     }
 }
