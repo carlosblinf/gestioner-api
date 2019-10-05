@@ -19,7 +19,7 @@ class ActivityStructureTable extends Migration
             $table->unsignedInteger('activity_id');
             $table->unsignedInteger('structure_id');
             $table->foreign('activity_id')->references('id')->on('activities');
-            $table->foreign('structure_id')->references('id')->on('structure');
+            $table->foreign('structure_id')->references('id')->on('structures');
 
             $table->timestamps();
         });

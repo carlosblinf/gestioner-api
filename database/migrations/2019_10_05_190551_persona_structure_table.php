@@ -19,7 +19,7 @@ class PersonaStructureTable extends Migration
             $table->unsignedInteger('persona_id');
             $table->unsignedInteger('structure_id');
             $table->foreign('persona_id')->references('id')->on('personas');
-            $table->foreign('structure_id')->references('id')->on('structure');
+            $table->foreign('structure_id')->references('id')->on('structures');
 
             $table->timestamps();
         });
