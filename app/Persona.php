@@ -12,7 +12,7 @@ class Persona extends Model
     protected $fillable = [
         'name', 'lastname','ci', 'address', 'municipality', 'province', 'gender',
         'phone', 'celphone', 'email', 'civil_status', 'date_birth', 'ocupations',
-        'professions', 'desease', 'celula', 'member', 'structure_id', 'activity_id',
+        'professions', 'desease', 'celula', 'member',
     ];
 
     public function isMember(){
