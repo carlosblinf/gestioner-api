@@ -5,6 +5,7 @@ namespace App;
 use App\User;
 use App\Persona;
 use App\Structure;
+use App\Department;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
@@ -23,6 +24,10 @@ class Activity extends Model
     
     public function structures(){
     	return $this->belongsToMany(Structure::class);
+    }
+
+    public function departaments(){
+        return $this->belongsToMany(Department::class);
     }
     
 }

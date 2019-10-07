@@ -31,6 +31,8 @@ class CreatePersonasTable extends Migration
             $table->string('desease')->nullable();
             $table->string('celula')->nullable();
             $table->string('member')->default(Persona::PERSONA_NO_MEMBER);
+            $table->unsignedInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments');
             $table->timestamps();
         });
     }

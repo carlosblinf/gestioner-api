@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Departmet;
+use App\Department;
 use Illuminate\Http\Request;
 
-class DepartmetController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class DepartmetController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Departmet  $departmet
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(Departmet $departmet)
+    public function show(Department $department)
     {
         //
     }
@@ -52,10 +52,10 @@ class DepartmetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Departmet  $departmet
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit(Departmet $departmet)
+    public function edit(Department $department)
     {
         //
     }
@@ -64,10 +64,10 @@ class DepartmetController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Departmet  $departmet
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Departmet $departmet)
+    public function update(Request $request, Department $department)
     {
         //
     }
@@ -75,10 +75,10 @@ class DepartmetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Departmet  $departmet
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Departmet $departmet)
+    public function destroy(Department $department)
     {
         //
     }

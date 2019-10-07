@@ -20,5 +20,6 @@ $factory->define(Persona::class, function (Faker $faker) {
         'desease' => $faker->word,
         'celula' => $faker->word,
         'member' => $faker->randomElement([Persona::PERSONA_MEMBER, Persona::PERSONA_NO_MEMBER]),
+        'department_id' => $faker->numberBetween($min = 1, $max = 6),
     ];
 });

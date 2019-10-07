@@ -17,7 +17,7 @@ class CreateStructuresTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('chief');
+            $table->unsignedInteger('chief')->nullable();;
             $table->timestamps();
         });
     }
