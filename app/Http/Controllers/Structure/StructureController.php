@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Structure;
 
-use App\Structure;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class StructureController extends Controller
 {
@@ -41,10 +41,10 @@ class StructureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Structure  $structure
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Structure $structure)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class StructureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Structure  $structure
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Structure $structure)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class StructureController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Structure  $structure
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Structure $structure)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class StructureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Structure  $structure
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Structure $structure)
+    public function destroy($id)
     {
         //
     }

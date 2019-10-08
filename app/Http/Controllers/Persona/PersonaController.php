@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Persona;
 
-use App\Persona;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PersonaController extends Controller
 {
@@ -41,10 +41,10 @@ class PersonaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Persona  $persona
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Persona $persona)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class PersonaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Persona  $persona
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Persona $persona)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class PersonaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Persona  $persona
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Persona $persona)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class PersonaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Persona  $persona
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Persona $persona)
+    public function destroy($id)
     {
         //
     }

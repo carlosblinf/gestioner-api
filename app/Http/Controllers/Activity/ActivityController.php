@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Activity;
 
-use App\Activity;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ActivityController extends Controller
 {
@@ -41,10 +41,10 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Activity  $activity
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Activity $activity)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Activity  $activity
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Activity $activity)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class ActivityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Activity  $activity
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Activity $activity)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class ActivityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Activity  $activity
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Activity $activity)
+    public function destroy($id)
     {
         //
     }
