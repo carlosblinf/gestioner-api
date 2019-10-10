@@ -36,7 +36,7 @@ class PersonaController extends ApiController
             'date_birth' => 'nullable|date',
             'email' => 'email|unique:personas',
             'member' => 'in:' . Persona::PERSONA_MEMBER . ',' . Persona::PERSONA_NO_MEMBER,
-            'department_id' => 'required|Integer',
+            'department_id' => 'required|Integer|min:1',
         ]);
 
         $persona = Persona::create($request->all());
@@ -70,7 +70,7 @@ class PersonaController extends ApiController
         $this->validate($request, [
             'email' => 'email|unique:personas,email,' . $persona->id,
             'member' => 'in:' . Persona::PERSONA_MEMBER . ',' . Persona::PERSONA_NO_MEMBER,
-            'department_id' => 'Integer',
+            'department_id' => 'Integer|min:1',
         ]);
 
         if ($request->has('name')){
