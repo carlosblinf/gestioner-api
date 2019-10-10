@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Activity;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class ActivityController extends Controller
+class ActivityController extends ApiController
 {
     /**
      * Display a listing of the resource.

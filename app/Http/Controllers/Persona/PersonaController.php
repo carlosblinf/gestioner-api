@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Persona;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class PersonaController extends Controller
+class PersonaController extends ApiController
 {
     /**
      * Display a listing of the resource.
