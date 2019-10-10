@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Activity;
 
+use App\Activity;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
@@ -14,17 +15,8 @@ class ActivityController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $actividades = Activity::all();
+        return $this->showAll($actividades);
     }
 
     /**
@@ -35,7 +27,17 @@ class ActivityController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'description' => 'nullable|max:255',
+            'dateStart' => 'required|date',
+            'dateEnd' => 'date',
+            'user_id' => 'Integer|min:1',
+        ]);
+
+        $actividad = Activity::create($request->all());
+
+        return $this->showOne($actividad, 201);
     }
 
     /**
@@ -46,18 +48,8 @@ class ActivityController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $actividad = Activity::findOrFail($id);
+        return $this->showOne($actividad);
     }
 
     /**
@@ -69,7 +61,39 @@ class ActivityController extends ApiController
      */
     public function update(Request $request, $id)
     {
-        //
+        $actividad = Activity::findOrFail($id);
+
+        $this->validate($request, [
+            'name' => 'min:3',
+            'description' => 'max:255',
+            'dateStart' => 'date',
+            'dateEnd' => 'date',
+            'user_id' => 'Integer|min:1',
+        ]);
+
+        if ($request->has('name')){
+            $actividad->name = $request->name;
+        }
+        if ($request->has('description')){
+            $actividad->description = $request->description;
+        }
+        if ($request->has('dateStart')){
+            $actividad->dateStart = $request->dateStart;
+        }
+        if ($request->has('dateEnd')){
+            $actividad->dateEnd = $request->dateEnd;
+        }
+        if ($request->has('user_id')){
+            $actividad->user_id = $request->user_id;
+        }
+
+         if (!$actividad->isDirty()){
+            return $this->errorResponse('Debe especificar al menos un valor diferente para cambiar', 422);
+        }
+
+        $actividad->save();
+
+        return $this->showOne($actividad);
     }
 
     /**
@@ -80,6 +104,10 @@ class ActivityController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $actividad = Activity::findOrFail($id);
+
+        $actividad->delete();
+
+        return $this->showOne($actividad);
     }
 }
