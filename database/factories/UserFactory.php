@@ -18,7 +18,7 @@ $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'nickname' => $faker->word,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => hash('sha256','123456'), // secret
         'admin' => User::REGULAR_USER,
         'actived' => $faker->randomElement([User::USER_ACTIVED,User::USER_NOT_ACTIVED]),
         'remember_token' => $faker->randomElement([str_random(10),null]),
