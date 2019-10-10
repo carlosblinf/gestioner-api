@@ -16,7 +16,7 @@ class UserController extends ApiController
     public function index()
     {
         $usuarios = User::all();
-        return response()->json(['data' => $usuarios], 200);
+        return $this->showAll($usuarios);
     }
 
     /**
@@ -42,7 +42,7 @@ class UserController extends ApiController
 
         $usuario = User::create($campos);
 
-        return response()->json(['data' => $usuario], 201);
+        return $this->showOne($usuarios, 201);
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends ApiController
     public function show($id)
     {
         $usuario = User::findOrFail($id);
-        return response()->json(['data' => $usuario], 200);
+        return $this->showOne($usuario);
     }
 
     /**
@@ -86,18 +86,18 @@ class UserController extends ApiController
         }
         if ($request->has('admin')){
             if (!$usuario->isActived()){
-                return response()->json(['error'=>'Un usuario solo puede ser administrador si ya ha sido activado', 'code'=>409], 409);
+                return $this->errorResponse('Un usuario solo puede ser administrador si ya ha sido activado', 409);
             }
             $usuario->admin = $request->admin;
         }
         
         if (!$usuario->isDirty()){
-            return response()->json(['error'=>'Debe especificar al menos un valor diferente para cambiar', 'code'=>422], 422);
+            return $this->errorResponse('Debe especificar al menos un valor diferente para cambiar', 422);
         }
 
         $usuario->save();
 
-        return response()->json(['data' => $usuario], 200);
+        return $this->showOne($usuario);
     }
 
     /**
@@ -112,6 +112,6 @@ class UserController extends ApiController
 
         $usuario->delete();
 
-        return response()->json(['data' => $usuario], 200);
+        return $this->showOne($usuario);
     }
 }
