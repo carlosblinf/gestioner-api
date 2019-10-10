@@ -35,6 +35,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function setNameAttribute($valor){
+        $this->attributes['name'] = strtolower($valor);
+    }
+    public function getNameAttribute($valor){
+        return ucwords($valor);
+    }
+    public function setNicknameAttribute($valor){
+        $this->attributes['nickname'] = strtolower($valor);
+    }
+
     public function isAdmin(){
         return $this->admin == User::ADMIN_USER;
     }
