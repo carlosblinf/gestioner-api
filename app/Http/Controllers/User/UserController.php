@@ -27,13 +27,11 @@ class UserController extends ApiController
      */
     public function store(Request $request)
     {
-        $reglas = [
+        $this->validate($request, [
             'name' => 'required',
-            'nickname' => 'required|unique:users',
+            'nickname' => 'required|min:3|unique:users',
             'password' => 'required|min:6|confirmed',
-        ];
-        
-        $this->validate($request, $reglas);
+        ]);
 
         $campos = $request->all();
         $campos['password'] = hash('sha256',$request->password);
@@ -42,7 +40,7 @@ class UserController extends ApiController
 
         $usuario = User::create($campos);
 
-        return $this->showOne($usuarios, 201);
+        return $this->showOne($usuario, 201);
     }
 
     /**
@@ -67,13 +65,12 @@ class UserController extends ApiController
     public function update(Request $request, $id)
     {
         $usuario = User::findOrFail($id);   
-        $reglas = [
+
+        $this->validate($request, [
             'password' => 'min:6|confirmed',
             'admin' => 'in:' . User::ADMIN_USER . ',' . User::REGULAR_USER,
             'actived' => 'in:' . User::USER_ACTIVED . ',' . User::USER_NOT_ACTIVED,
-        ];
-
-        $this->validate($request, $reglas);
+        ]);
 
         if ($request->has('name')){
             $usuario->name = $request->name;
