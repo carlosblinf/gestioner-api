@@ -17,6 +17,10 @@ class Persona extends Model
         'phone', 'celphone', 'email', 'civil_status', 'date_birth', 'ocupations',
         'professions', 'desease', 'celula', 'member', 'department_id',
     ];
+    
+    public function setEmailAttribute($valor){
+        $this->attributes['email'] = strtolower($valor);
+    }
 
     public function isMember(){
     	return $this->member == Persona::PERSONA_MEMBER;
