@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ApiController;
 
 class UserController extends ApiController
@@ -34,7 +35,7 @@ class UserController extends ApiController
         ]);
 
         $campos = $request->all();
-        $campos['password'] = hash('sha256',$request->password);
+        $campos['password'] = bcrypt($request->password);
         $campos['admin'] = User::REGULAR_USER;
         $campos['actived'] = User::USER_NOT_ACTIVED;
 
@@ -76,7 +77,9 @@ class UserController extends ApiController
             $usuario->name = $request->name;
         }
         if ($request->has('password')){
-            $usuario->password = hash('sha256',$request->password);
+            if (!Hash::check($request->password, $usuario->getAuthPassword())) {
+                $usuario->password = bcrypt($request->password);
+            }
         }
         if ($request->has('actived')){
             $usuario->actived = $request->actived;

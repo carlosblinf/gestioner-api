@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         User::create([
         	'name' => 'Admin',
         	'nickname' => 'admin',
-        	'password' => hash('sha256','admin'),
+        	'password' => bcrypt('admin'),
             'admin' => User::ADMIN_USER,
             'actived' => User::USER_ACTIVED,
         ]);
