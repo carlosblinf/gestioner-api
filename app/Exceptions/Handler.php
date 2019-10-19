@@ -91,6 +91,7 @@ class Handler extends ExceptionHandler
                 return $this->errorResponse('No se puede eliminar de manera permanete el recurso. Esta relacionado con otro.', 409);
             }
         }
+        
         if (config('app.debug')) {
             return parent::render($request, $exception);
         }

@@ -50,10 +50,10 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $usuario = User::findOrFail($id);
-        return $this->showOne($usuario);
+        // $usuario = User::findOrFail($id);
+        return $this->showOne($user);
     }
 
     /**
@@ -63,10 +63,8 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $usuario = User::findOrFail($id);   
-
         $this->validate($request, [
             'password' => 'min:6|confirmed',
             'admin' => 'in:' . User::ADMIN_USER . ',' . User::REGULAR_USER,
@@ -74,30 +72,30 @@ class UserController extends ApiController
         ]);
 
         if ($request->has('name')){
-            $usuario->name = $request->name;
+            $user->name = $request->name;
         }
         if ($request->has('password')){
-            if (!Hash::check($request->password, $usuario->getAuthPassword())) {
-                $usuario->password = bcrypt($request->password);
+            if (!Hash::check($request->password, $user->getAuthPassword())) {
+                $user->password = bcrypt($request->password);
             }
         }
         if ($request->has('actived')){
-            $usuario->actived = $request->actived;
+            $user->actived = $request->actived;
         }
         if ($request->has('admin')){
-            if (!$usuario->isActived()){
+            if (!$user->isActived()){
                 return $this->errorResponse('Un usuario solo puede ser administrador si ya ha sido activado', 409);
             }
-            $usuario->admin = $request->admin;
+            $user->admin = $request->admin;
         }
         
-        if (!$usuario->isDirty()){
+        if (!$user->isDirty()){
             return $this->errorResponse('Debe especificar al menos un valor diferente para cambiar', 422);
         }
 
-        $usuario->save();
+        $user->save();
 
-        return $this->showOne($usuario);
+        return $this->showOne($user);
     }
 
     /**
@@ -106,12 +104,10 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $usuario = User::findOrFail($id);
+        $user->delete();
 
-        $usuario->delete();
-
-        return $this->showOne($usuario);
+        return $this->showOne($user);
     }
 }
