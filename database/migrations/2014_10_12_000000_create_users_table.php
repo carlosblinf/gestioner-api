@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('actived')->default(User::USER_NOT_ACTIVED);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

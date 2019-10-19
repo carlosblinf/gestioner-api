@@ -7,9 +7,13 @@ use App\Persona;
 use App\Structure;
 use App\Department;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Activity extends Model
 {
+    use SoftDeletes;
+    protected $dates = ['delete_at'];
+    
     protected $fillable = [
         'name', 'description', 'dateStart', 'dateEnd', 'user_id',
     ];

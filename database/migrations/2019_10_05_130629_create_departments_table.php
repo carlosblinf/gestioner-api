@@ -19,6 +19,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('description')->nullable();
             $table->unsignedInteger('chief')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

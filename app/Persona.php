@@ -6,9 +6,13 @@ use App\Activity;
 use App\Structure;
 use App\Department;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Persona extends Model
 {
+    use SoftDeletes;
+    protected $dates = ['delete_at'];
+    
 	const PERSONA_MEMBER = 'true';
 	const PERSONA_NO_MEMBER = 'false';
 
